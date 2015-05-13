@@ -1,6 +1,7 @@
 package com.functional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -31,5 +32,15 @@ public class ElementPicker
             .filter(checkIfStartsWith(letter))
             .collect(Collectors.toList());
     return matchingNames;
+  }
+
+  public Optional<String> pickName(final List<String> names, final String startingLetter)
+  {
+    final Optional<String> foundName =
+            names.stream()
+            .filter(name -> name.startsWith(startingLetter))
+            .findFirst();
+
+    return foundName;
   }
 }

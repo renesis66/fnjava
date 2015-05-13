@@ -4,7 +4,9 @@ import org.junit.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
+import static org.junit.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotNull;
@@ -15,6 +17,9 @@ import static org.junit.Assert.assertNotNull;
 
 public class PickElementsTest
 {
+  ElementPicker elementPicker;
+  final List friends =
+          Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott");
   @BeforeClass
   public static void setUpClass() throws Exception
   {
@@ -28,6 +33,8 @@ public class PickElementsTest
   @Before
   public void setUp() throws Exception
   {
+    elementPicker = new ElementPicker();
+
   }
 
   @After
@@ -38,12 +45,17 @@ public class PickElementsTest
   @Test
   public void returnsListWithNamesThatStartWithTheLetterN()
   {
-    ElementPicker elementPicker = new ElementPicker();
-    final List friends =
-        Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott");
 
     List matchingNames = elementPicker.getNamesStartingWith(friends, "N");
     assertNotNull(matchingNames);
     assertThat(matchingNames.size(), equalTo(2));
+  }
+
+  @Test
+  public void returnsFirstNameOrOptionalFromListStartingWithTheLetterS() {
+    Optional<String> matchingName = elementPicker.pickName(friends, "S");
+    assertNotNull(matchingName);
+    assertTrue(matchingName.isPresent());
+    assertThat(matchingName.get(), equalTo("Sara"));
   }
 }
