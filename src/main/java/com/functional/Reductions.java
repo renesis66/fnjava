@@ -10,8 +10,13 @@ import java.util.OptionalInt;
  */
 public class Reductions {
     public String pickLongestName(List<String> friends) {
-        Optional<String> longest = friends.stream().max(Comparator.comparingInt(name -> name.length()));
+        Optional<String> longestName = friends.stream().max(Comparator.comparingInt(name -> name.length()));
 
-        return longest.orElse("");
+        return longestName.orElse("");
+    }
+
+    public String pickShortestName(List<String> friends) {
+        Optional<String> shortestName = friends.stream().min(Comparator.comparingInt(name -> name.length()));
+        return shortestName.orElse("");
     }
 }

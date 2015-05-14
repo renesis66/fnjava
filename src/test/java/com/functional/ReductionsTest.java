@@ -16,7 +16,7 @@ import static org.junit.Assert.assertNotNull;
 public class ReductionsTest {
     Reductions reductions;
     final List friends =
-            Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott", "Stephen");
+            Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott", "Stephen", "Ian");
     @BeforeClass
     public static void setUpClass() throws Exception
     {
@@ -46,6 +46,14 @@ public class ReductionsTest {
         String longestName = reductions.pickLongestName(friends);
         assertNotNull(longestName);
         assertEquals("Stephen".length(), longestName.length());
+    }
+
+    @Test
+    public void returnsShortestNameFromList()
+    {
+        String shortestName = reductions.pickShortestName(friends);
+        assertNotNull(shortestName);
+        assertEquals("Ian".length(), shortestName.length());
     }
 
 }
