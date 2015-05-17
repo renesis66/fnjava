@@ -17,12 +17,13 @@ import static org.junit.Assert.assertNotNull;
 
 public class PickElementsTest
 {
-  ElementPicker elementPicker;
+  static ElementPicker elementPicker;
   final List friends =
           Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott");
   @BeforeClass
   public static void setUpClass() throws Exception
   {
+    elementPicker = new ElementPicker();
   }
 
   @AfterClass
@@ -33,7 +34,6 @@ public class PickElementsTest
   @Before
   public void setUp() throws Exception
   {
-    elementPicker = new ElementPicker();
 
   }
 

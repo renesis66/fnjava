@@ -5,8 +5,6 @@ import org.junit.*;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -14,12 +12,13 @@ import static org.junit.Assert.assertNotNull;
  * Created by sdierbec on 5/14/15.
  */
 public class ReductionsTest {
-    Reductions reductions;
+    static Reductions reductions;
     final List friends =
             Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott", "Stephen", "Ian");
     @BeforeClass
     public static void setUpClass() throws Exception
     {
+        reductions = new Reductions();
     }
 
     @AfterClass
@@ -30,7 +29,6 @@ public class ReductionsTest {
     @Before
     public void setUp() throws Exception
     {
-        reductions = new Reductions();
 
     }
 
