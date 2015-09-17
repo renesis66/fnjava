@@ -5,11 +5,13 @@ import org.junit.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Predicate;
 
-import static org.junit.Assert.assertTrue;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by scottdierbeck on 5/12/15.
@@ -54,8 +56,19 @@ public class PickElementsTest
   @Test
   public void returnsFirstNameOrOptionalFromListStartingWithTheLetterS() {
     Optional<String> matchingName = elementPicker.pickName(friends, "S");
+    Predicate predicate;
+    Function fn;
     assertNotNull(matchingName);
     assertTrue(matchingName.isPresent());
     assertThat(matchingName.get(), equalTo("Sara"));
+  }
+
+  @Test
+  public void checkingSomeMethods() {
+    String abc = "abc";
+    abc.chars()
+            .forEach(System.out::println);
+    abc.codePoints()
+            .forEach(System.out::println);
   }
 }
